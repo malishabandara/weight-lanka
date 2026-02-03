@@ -1,0 +1,17 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+RewriteBase /weightlanka/
+
+# 1) Redirect index.php to root /weightlanka/
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)/index\.php [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# 2) Redirect .php files only if the request has the extension externally
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# 3) Internal rewrite: Add .php if corresponding file exists
+# We use !-d so we don't break directory access
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

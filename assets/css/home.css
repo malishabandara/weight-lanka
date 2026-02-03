@@ -1,0 +1,189 @@
+/* Home (index.php) – eye-catching navigation like the provided sample */
+
+.wl-home-body.wl-bg{
+  background:
+    radial-gradient(1200px 800px at 12% 18%, rgba(255,255,255,.22), transparent 60%),
+    radial-gradient(900px 650px at 86% 10%, rgba(56,189,248,.26), transparent 60%),
+    radial-gradient(900px 650px at 78% 86%, rgba(37,99,235,.26), transparent 60%),
+    linear-gradient(135deg, #0b2b66 0%, #1d4ed8 52%, #dbeafe 160%);
+  color: rgba(255,255,255,.92);
+}
+
+.wl-home-main{
+  padding: 0 !important;
+}
+
+.wl-home-wrap{
+  min-height: 100vh;
+  padding: 46px 18px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.wl-home-wrap::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 520px at 50% 5%, rgba(0,0,0,.22), transparent 70%),
+    linear-gradient(180deg, rgba(0,0,0,.38), rgba(0,0,0,.12) 55%, rgba(0,0,0,.35));
+  pointer-events: none;
+}
+.wl-home-wrap > *{ position: relative; z-index: 1; }
+
+.wl-home-top{
+  width: min(1120px, 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+}
+
+.wl-home-quick{
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 55px rgba(0,0,0,.30);
+}
+.wl-home-quick a{
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: rgba(255,255,255,.92);
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.18);
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+.wl-home-quick a:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.26);
+}
+
+.wl-home-title{
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: .4px;
+  font-size: clamp(34px, 4.4vw, 54px);
+  line-height: 1.02;
+  margin-top: 10px;
+  text-shadow: 0 16px 60px rgba(0,0,0,.40);
+}
+
+.wl-home-subtitle{
+  text-align: center;
+  margin-top: 10px;
+  color: rgba(255,255,255,.84);
+  font-size: 14px;
+  letter-spacing: .2px;
+}
+
+.wl-home-grid{
+  width: min(1120px, 100%);
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.wl-home-tile{
+  position: relative;
+  border-radius: 24px;
+  padding: 26px 18px;
+  min-height: 178px;
+  text-decoration: none;
+  color: rgba(255,255,255,.92);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(0,0,0,.22);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 55px rgba(0,0,0,.32);
+  transform: translateY(0);
+  transition: transform .14s ease, box-shadow .14s ease;
+  overflow: hidden;
+}
+
+/* Gradient border with rounded corners */
+.wl-home-tile::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(255,255,255,.70), rgba(56,189,248,.55), rgba(37,99,235,.55));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: .75;
+}
+
+.wl-home-tile::after{
+  content:"";
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(700px 220px at 0% 0%, rgba(255,255,255,.18), transparent 65%);
+  opacity: 0;
+  transition: opacity .14s ease;
+}
+
+.wl-home-tile:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 22px 70px rgba(0,0,0,.38);
+}
+.wl-home-tile:hover::after{ opacity: 1; }
+
+.wl-home-tile > *{ position: relative; z-index: 1; }
+
+.wl-home-icon{
+  font-size: 44px;
+  color: rgba(255,255,255,.95);
+  filter: drop-shadow(0 12px 22px rgba(0,0,0,.45));
+}
+
+.wl-home-label{
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: .9px;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.wl-home-hint{
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.74);
+  max-width: 520px;
+  margin-top: 14px;
+}
+
+@media (max-width: 720px){
+  .wl-home-top{
+    flex-direction: column;
+    gap: 14px;
+  }
+  .wl-home-quick{
+    position: static;
+    align-self: center;
+  }
+  .wl-home-wrap{ padding: 36px 14px 56px; }
+}
+
